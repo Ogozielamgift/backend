@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv").config();
 const connectDB = require("./Config/db");
 const contentRoutes = require("./routes/Content");
@@ -35,6 +36,7 @@ const port = process.env.port;
 // app.get("/get", (req, res) => {
 //   res.json(productInfo);
 // });
+app.use(cors());
 app.use(bodyparser.json());
 app.use("/Contents", contentRoutes);
 app.listen(port, () => console.log(`server running on port ${port}`));
